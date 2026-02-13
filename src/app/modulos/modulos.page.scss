@@ -1,0 +1,212 @@
+.permissions-content {
+
+  --background: #0f172a;
+
+}
+
+/* CARD */
+.permissions-card {
+
+  background: #1e293b;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 12px;
+
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.3);
+
+}
+
+/* HEADER */
+.permissions-header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+
+}
+
+.card-title {
+
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+
+}
+
+.card-subtitle {
+
+  font-size: 13px;
+  color: #94a3b8;
+
+}
+
+/* HEADER ROW */
+.header-row {
+
+  background: #3b82f6;
+
+  color: white;
+
+  font-weight: 600;
+
+  border-radius: 8px;
+
+  padding: 10px;
+
+}
+
+/* MODULE ROW */
+.module-row {
+
+  align-items: center;
+
+  border-bottom: 1px solid #334155;
+
+  padding: 8px;
+
+}
+
+/* HOVER EFFECT */
+.module-row:hover {
+
+  background: #334155;
+
+  border-radius: 8px;
+
+}
+
+/* MODULE NAME */
+.module-name {
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: white;
+  font-weight: 500;
+
+}
+
+/* ICON */
+.module-name ion-icon {
+
+  font-size: 18px;
+  color: #60a5fa;
+
+}
+
+/* BUTTON */
+ion-button {
+
+  height: 28px;
+  font-size: 12px;
+
+}
+
+.footer {
+
+  text-align: center;
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+}
+
+.table-container {
+
+  overflow-x: auto;
+
+  width: 100%;
+
+}
+
+.permissions-table {
+
+  min-width: 900px;
+
+}
+
+.permissions-content {
+
+  --padding-bottom: 40px;
+
+}
+
+.table-container::-webkit-scrollbar {
+
+  height: 8px;
+
+}
+
+.table-container::-webkit-scrollbar-thumb {
+
+  background: #3b82f6;
+  border-radius: 4px;
+
+}
+
+.permissions-card ion-grid {
+
+  font-size: 11px;
+
+}
+
+.permissions-card ion-col {
+
+  padding: 4px 6px;
+  min-height: 34px;
+
+}
+
+
+
+.module-row ion-button {
+
+  height: 24px;
+  font-size: 10px;
+
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-start: 6px;
+  --padding-end: 6px;
+
+}
+
+.permissions-card {
+
+  zoom: 0.92;
+
+}
+
+.item-container {
+  --background: #ffffff;
+  border-radius: 12px;
+  margin: 10px;
+  padding: 8px;
+  border: 1px solid #3880ff30;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.label-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ion-color-primary);
+}
+
+.info-text {
+  font-size: 13px;
+  margin-left: 16px;
+  margin-top: 4px;
+  display: block;
+}
+
+
+
+
+
+
+

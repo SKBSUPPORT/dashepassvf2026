@@ -1,0 +1,227 @@
+<ion-content [fullscreen]="true">
+
+  <!-- SELECT CLIENTE -->
+  <ion-card>
+
+    <ion-card-content>
+
+      <ion-label position="stacked" class="label-title">
+        Cliente
+      </ion-label>
+      <ionic-selectable class="select-custom" [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente"
+        [items]="clientes" itemValueField="id" itemTextField="name" [canSearch]="true"
+        (onChange)="clienteChange($event)">
+
+      </ionic-selectable>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <!-- MODULOS -->
+  <ion-card *ngIf="cliente">
+
+    <ion-card-header>
+
+      <ion-icon name="grid-outline"></ion-icon>
+
+      <ion-card-title>
+        Activación de módulos
+      </ion-card-title>
+
+      <ion-card-subtitle>
+        Controla qué funciones están disponibles
+      </ion-card-subtitle>
+
+    </ion-card-header>
+
+
+    <ion-card-content>
+
+      <!-- TABS -->
+      <ion-list>
+
+        <ion-list-header>
+          Tabs del sistema
+        </ion-list-header>
+
+        <ion-item>
+
+          <ion-label>
+            Filiales
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.tabfiliales" (ionChange)="toggle('tabfiliales')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Finanzas
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.tabgestiones" (ionChange)="toggle('tabgestiones')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Seguridad
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.tabseguridad" (ionChange)="toggle('tabseguridad')">
+          </ion-toggle>
+
+        </ion-item>
+
+      </ion-list>
+
+
+      <!-- AUTORIZADOS -->
+      <ion-list>
+
+        <ion-list-header>
+          Tipos de autorizados
+        </ion-list-header>
+
+
+        <ion-item>
+
+          <ion-label>
+            Eventual
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.addev" (ionChange)="toggle('addev')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Permanente
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.addpe" (ionChange)="toggle('addpe')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Recurrente
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.addre" (ionChange)="toggle('addre')">
+          </ion-toggle>
+
+        </ion-item>
+
+      </ion-list>
+
+
+      <!-- FUNCIONES -->
+      <ion-list>
+
+        <ion-list-header>
+          Funciones del sistema
+        </ion-list-header>
+
+
+        <ion-item>
+
+          <ion-label>
+            Llave digital usuarios
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.digitalkeyusr"
+            (ionChange)="toggle('digitalkeyusr')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Abrir portón
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.opengatebutton"
+            (ionChange)="toggle('opengatebutton')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Abrir con portón QR
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.opengateqrbutton"
+            (ionChange)="toggle('opengateqrbutton')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Reconocimiento facial
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.scanface" (ionChange)="toggle('scanface')">
+          </ion-toggle>
+
+        </ion-item>
+
+
+        <ion-item>
+
+          <ion-label>
+            Historial facial
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.scanhistory" (ionChange)="toggle('scanhistory')">
+          </ion-toggle>
+
+        </ion-item>
+
+        <ion-item>
+
+          <ion-label>
+            Activación Airbnb
+          </ion-label>
+
+          <ion-toggle slot="end" color="success" [(ngModel)]="config.statusAirbnb" (ionChange)="toggle('statusAirbnb')">
+          </ion-toggle>
+
+        </ion-item>
+
+      </ion-list>
+
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <div class="footer">
+    You-Pass Admin Dashboard © 2026
+  </div>
+
+
+</ion-content>

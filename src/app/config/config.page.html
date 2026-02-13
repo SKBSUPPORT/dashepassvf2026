@@ -1,0 +1,213 @@
+
+
+<form #form="ngForm">
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="8" size-lg="8" size-xs="8">
+        <div padding>
+
+          <ion-item>
+            <ion-label>Cliente</ion-label>
+            <ionic-selectable [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente" [items]="clientes"
+              itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="clienteChange($event)">
+            </ionic-selectable>
+          </ion-item>
+
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+<ion-content *ngIf="clienteselect">
+
+  <p align="center">No hay cliente seleccionado</p>
+
+
+
+</ion-content>
+
+
+<ion-content *ngIf="!clienteselect">
+
+  <ion-segment color="dark" [(ngModel)]="segment" (click)="cambiosegment()">
+    <ion-segment-button value="seguridad" checked>
+      <ion-label>Seguridad</ion-label>
+      <ion-icon name="shield-checkmark"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="seguridadhik" checked>
+      <ion-label>Seguridad Hik</ion-label>
+      <ion-icon name="shield-checkmark"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="reservas">
+      <ion-label>Reservas</ion-label>
+      <ion-icon name="bookmark"></ion-icon>
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <ion-card>
+    <ion-card-content [ngSwitch]="segment">
+
+      <div *ngSwitchCase="'seguridad'">
+        <h2 align="center">Módulo de seguridad</h2>
+
+        <ion-item>
+          <ion-label>Open Gate</ion-label>
+          <ion-toggle [(ngModel)]="isEnabledOpenGate" (ionChange)="toggleFunctionalityOG()"></ion-toggle>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Control de QR Safesmart plus</ion-label>
+          <ion-toggle [(ngModel)]="statusqrcontrol" color="success" (ionChange)="statuschange($event)"></ion-toggle>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label color="dark" position="stacked">Access Group Eventual</ion-label>
+          <ion-input type="text" placeholder="Access Group Eventual" [(ngModel)]="this.accessgroupev"></ion-input>
+          <ion-button (click)="edit('ev')" size="small" expand="block">Guardar</ion-button>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label color="dark" position="stacked">Access Group Permanente</ion-label>
+          <ion-input type="text" placeholder="Access Group Permanente" [(ngModel)]="this.accessgrouppe"></ion-input>
+          <ion-button (click)="edit('pe')" size="small" expand="block">Guardar</ion-button>
+        </ion-item>
+      
+      
+        <h2 align="center">Seguridad por zonas</h2>
+      
+        <ion-grid class="tabla">
+          <ion-row class="rownivel">
+            <ion-col align="center">
+              <b>Nivel #1 de Seguridad EPASS</b>
+            </ion-col>
+          </ion-row>
+          <ion-row class="header">
+            <ion-col>
+              Clasificación #1
+            </ion-col>
+            <ion-col>
+              AG Eventual
+            </ion-col>
+            <ion-col>
+              AG Permanente
+            </ion-col>
+            <ion-col class="acciones" size="2">
+              Opciones
+            </ion-col>
+      
+          </ion-row>
+      
+      
+      
+          <ion-row class="row" *ngFor="let detalle of this.nivel1">
+            <ion-col>
+              {{detalle.nivel1}}
+            </ion-col>
+            <ion-col align="center">
+              {{detalle.SSaccessgroupEV}}
+              <ion-icon color="danger" name="ban" *ngIf="detalle.SSaccessgroupEV == undefined"></ion-icon>
+            </ion-col>
+            <ion-col align="center">
+              {{detalle.SSaccessgroupPE}}
+              <ion-icon color="danger" name="ban" *ngIf="detalle.SSaccessgroupPE == undefined"></ion-icon>
+            </ion-col>
+            <ion-col class="acciones" size="2">
+              <ion-button (click)="showmenu(detalle)" size="small">
+                <ion-icon name="settings"></ion-icon>
+              </ion-button>
+      
+            </ion-col>
+      
+          </ion-row>
+      
+        </ion-grid>
+      
+      
+      
+      
+        <!-- ******************************* -->
+      
+      
+        <ion-grid class="tabla">
+          <ion-row class="rownivel">
+            <ion-col align="center">
+              <b>Nivel #2 de Seguridad EPASS</b>
+            </ion-col>
+          </ion-row>
+          <ion-row class="header">
+            <ion-col>
+              Clasificación #1
+            </ion-col>
+            <ion-col>
+              Clasificación #2
+            </ion-col>
+            <ion-col>
+              AG Eventual
+            </ion-col>
+            <ion-col>
+              AG Permanente
+            </ion-col>
+            <ion-col class="acciones" size="2">
+              Opciones
+            </ion-col>
+          </ion-row>
+      
+      
+      
+          <ion-row class="row" *ngFor="let detalle2 of this.nivel2">
+            <ion-col>
+              {{detalle2.nivel1}}
+            </ion-col>
+            <ion-col>
+              {{detalle2.nivel2}}
+            </ion-col>
+            <ion-col align="center" class="agletra">
+              {{detalle2.SSaccessgroupEV}}
+              <ion-icon color="danger" name="ban" *ngIf="detalle2.SSaccessgroupEV == undefined"></ion-icon>
+            </ion-col>
+            <ion-col align="center" class="agletra">
+              {{detalle2.SSaccessgroupPE}}
+              <ion-icon color="danger" name="ban" *ngIf="detalle2.SSaccessgroupPE == undefined"></ion-icon>
+            </ion-col>
+            <ion-col class="acciones" size="2">
+              <ion-button (click)="showmenu2(detalle2)" size="small">
+                <ion-icon name="settings"></ion-icon>
+              </ion-button>
+            </ion-col>
+      
+          </ion-row>
+      
+        </ion-grid>
+      
+      
+      
+      </div>
+
+
+      <div *ngSwitchCase="'seguridadhik'">
+        <h2 align="center">Módulo de seguridad</h2>
+
+
+      
+        <ion-item>
+          <ion-label>Control de QR Hik Vision</ion-label>
+          <ion-toggle [(ngModel)]="statusqrcontrolhik" color="success" (ionChange)="statuschangehik($event)"></ion-toggle>
+        </ion-item> 
+          
+      
+      </div>
+
+
+      <div *ngSwitchCase="'reservas'">
+        <h2 align="center">Módulo de reservas</h2>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

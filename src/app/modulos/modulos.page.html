@@ -1,0 +1,220 @@
+
+<form #form="ngForm">
+
+  <ion-item lines="none" class="item-container">
+    
+
+    <ion-label position="stacked" class="label-title">
+      Cliente
+    </ion-label>
+
+
+    <ionic-selectable
+      class="select-custom"
+      [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="cliente"
+      [items]="clientes"
+      itemValueField="id"
+      itemTextField="name"
+      [canSearch]="true"
+      (onChange)="clienteChange($event)">
+
+    </ionic-selectable>
+
+  </ion-item>
+
+</form>
+
+
+
+<ion-content *ngIf="clienteselect" >
+
+<ion-text color="medium" class="info-text">
+  Selecciona un cliente para visualizar la información
+</ion-text>
+
+</ion-content>
+
+<ion-content *ngIf="!clienteselect" class="permissions-content">
+
+  <div class="permissions-card">
+
+    <!-- HEADER -->
+    <div class="permissions-header">
+
+      <div>
+        <div class="card-title">
+          Permisos de módulos
+        </div>
+
+        <div class="card-subtitle">
+          Control de accesos por rol del cliente
+        </div>
+      </div>
+
+    </div>
+
+    <div class="table-container">
+
+      <ion-grid class="permissions-table">
+
+        <!-- GRID -->
+        <ion-grid>
+
+          <!-- HEADER -->
+          <ion-row class="header-row">
+
+            <ion-col size="2">Módulo</ion-col>
+
+            <ion-col>Principal</ion-col>
+
+            <ion-col>Admin</ion-col>
+
+            <ion-col>Propietario</ion-col>
+
+            <ion-col>Inquilino</ion-col>
+
+            <ion-col>Seguridad</ion-col>
+
+            <ion-col>Jefe</ion-col>
+
+            <ion-col>Otros</ion-col>
+
+            <ion-col>Supervisor</ion-col>
+
+          </ion-row>
+
+
+          <!-- FILAS -->
+          <ion-row class="module-row" *ngFor="let modulo of modulosstandard">
+
+            <!-- NOMBRE -->
+            <ion-col size="2" class="module-name">
+
+              <ion-icon [name]="modulo.icon || 'apps-outline'"></ion-icon>
+
+              {{modulo.label}}
+
+            </ion-col>
+
+
+            <!-- PRINCIPAL -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.access ? 'success' : 'medium'" fill="solid"
+                (click)="changemodule(modulo,$event)">
+
+                {{modulo.access ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+
+            <!-- ADMIN -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.accessadm ? 'success' : 'medium'"
+                (click)="changerole(modulo,$event,'ADM')" [disabled]="modulo.disabledadm">
+
+                {{modulo.accessadm ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+
+            <!-- PROPIETARIO -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.accesspro ? 'success' : 'medium'"
+                (click)="changerole(modulo,$event,'PRO')" [disabled]="modulo.disabledpro">
+
+                {{modulo.accesspro ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+
+            <!-- INQUILINO -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.accessinq ? 'success' : 'medium'"
+                (click)="changerole(modulo,$event,'INQ')" [disabled]="modulo.disabledinq">
+
+                {{modulo.accessinq ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+
+            <!-- SEGURIDAD -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.accesssec ? 'success' : 'medium'"
+                (click)="changerole(modulo,$event,'SEC')" [disabled]="modulo.disabledsec">
+
+                {{modulo.accesssec ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+
+            <!-- JEFE -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.accessjef ? 'success' : 'medium'"
+                (click)="changerole(modulo,$event,'JEF')" [disabled]="modulo.disabledjef">
+
+                {{modulo.accessjef ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+
+            <!-- OTROS -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.accessotros ? 'success' : 'medium'"
+                (click)="changerole(modulo,$event,'OTROS')" [disabled]="modulo.disabledotros">
+
+                {{modulo.accessotros ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+
+            <!-- SUPERVISOR -->
+            <ion-col>
+
+              <ion-button size="small" [color]="modulo.accessspv ? 'success' : 'medium'"
+                (click)="changerole(modulo,$event,'SPV')" [disabled]="modulo.disabledspv">
+
+                {{modulo.accessspv ? 'Activo' : 'Off'}}
+
+              </ion-button>
+
+            </ion-col>
+
+          </ion-row>
+
+
+        </ion-grid>
+
+      </ion-grid>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    You-Pass Admin Dashboard © 2026
+  </div>
+
+</ion-content>

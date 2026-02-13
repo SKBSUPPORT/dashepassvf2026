@@ -1,0 +1,122 @@
+<!-- SEARCH -->
+<form #form="ngForm">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size="12" size-md="6" size-lg="5">
+
+        <ion-searchbar
+          mode="ios"
+          class="search-bar"
+          (ionInput)="getItems($event)"
+          placeholder="Buscar cliente..."
+          show-clear-button="focus">
+        </ion-searchbar>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+
+<!-- CONTENT -->
+<ion-content class="clients-content">
+
+  <div class="table-card">
+
+    <!-- TITLE -->
+    <div class="table-header">
+      <div>
+        <div class="card-title">Clientes</div>
+        <div class="card-subtitle">Gestión de clientes registrados</div>
+      </div>
+    </div>
+
+
+    <!-- TABLE -->
+    <div class="table-wrapper">
+
+      <ion-grid>
+
+        <!-- HEADER -->
+        <ion-row class="header-row">
+
+          <ion-col size="2">Código</ion-col>
+
+          <ion-col size="4">Cliente</ion-col>
+
+          <ion-col size="2">País</ion-col>
+
+          <ion-col size="2">Estado</ion-col>
+
+          <ion-col size="2">Acción</ion-col>
+
+        </ion-row>
+
+
+        <!-- ROWS -->
+        <ion-row
+          class="table-row"
+          *ngFor="let item of clients2">
+
+          <ion-col size="2">
+            {{item.id}}
+          </ion-col>
+
+          <ion-col size="4" class="client-name">
+            {{item.nombre}}
+          </ion-col>
+
+          <ion-col size="2">
+            {{item.pais}}
+          </ion-col>
+
+
+          <!-- STATUS BADGE -->
+          <ion-col size="2">
+
+            <span
+              class="status-badge"
+              [class.active]="item.status == 'Activo'"
+              [class.inactive]="item.status != 'Activo'">
+
+              {{item.status}}
+
+            </span>
+
+          </ion-col>
+
+
+          <!-- BUTTON -->
+          <ion-col size="2">
+
+            <ion-button
+              size="small"
+              fill="outline"
+              (click)="edit(item)">
+
+              Editar
+
+            </ion-button>
+
+          </ion-col>
+
+        </ion-row>
+
+      </ion-grid>
+
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer class="main-footer">
+
+  <ion-toolbar>
+
+    <div class="footer-text">
+      You-Pass Admin Dashboard © 2026
+    </div>
+
+  </ion-toolbar>
+
+</ion-footer>

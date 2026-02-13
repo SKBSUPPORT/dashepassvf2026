@@ -1,0 +1,63 @@
+.header-row {
+    background: #428cff;
+    color: #fff;
+    // font-size: 12px;
+  }
+  
+  .header-text {
+    color: black;
+    font-size: 10px;
+  }
+  
+  ion-col {
+    border: 2px solid #ECEEEF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 auto;
+  }
+  
+  .division{
+    padding-top:20px;
+    position: relative;
+    direction: rtl;
+  
+  }
+
+  .header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    color: whitesmoke;
+    background: linear-gradient(180deg, #216DDE 0%, #A34DF0 100%); 
+  
+    // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+.tabla{
+    font-size: x-small;
+
+}
+  
+.row{
+  font-size: medium;
+}
+
+.row:nth-child(even) {
+  background-color: #dddddd;
+
+}
+
+.acciones{
+  text-align: center;
+}
+
+.rownivel{
+  background-color: burlywood;
+}
+
+.agletra{
+  font-size: large;
+}

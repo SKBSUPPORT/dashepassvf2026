@@ -1,0 +1,104 @@
+
+</ion-header>
+
+<form  #form="ngForm" >
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="8" size-lg="8" size-xs="8">
+        <div padding>
+
+<!-- 
+           <ion-item>
+            <ion-input  name="id" type="text" placeholder="Codigo Cliente" [(ngModel)]="this.cliente"></ion-input>
+          </ion-item>  -->
+
+          <ion-item>
+            <ion-label>Cliente</ion-label>
+            <ionic-selectable [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente" [items]="clientes" itemValueField="id" itemTextField="name"
+              [canSearch]="true" (onChange)="clienteChange($event)">
+            </ionic-selectable>
+          </ion-item>
+
+        </div>
+<!--         <div padding>
+          <ion-button (click)="getusers()"  size="small" type="submit"  expand="block">Buscar</ion-button>
+        </div> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+<ion-content>
+
+  <div class="division">
+
+    <ion-button slot="end" size="small" (click)="exportToExcel($event)">
+      <ion-icon name="download"></ion-icon>
+    </ion-button>
+
+    <ion-button slot="end" size="small" (click)="getusers()">
+      <ion-icon name="refresh"></ion-icon>
+    </ion-button>
+
+
+  </div>
+
+
+  <ion-grid class="ion-text-center">
+
+    <ion-row class="header-row">
+      <ion-col>
+        <ion-text>Codigo de Cliente</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Usuario</ion-text>
+      </ion-col>
+
+      
+      <ion-col>
+        <ion-text>Category</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Status</ion-text>
+      </ion-col>
+
+
+    </ion-row>
+
+
+    <ion-row class="header-text" *ngFor="let item of this.nameusers" >
+      <ion-col>
+        <ion-text>
+          {{item.customer}}
+        </ion-text>
+      </ion-col>
+
+        <ion-col>
+          <ion-text>
+            {{item.userId}}
+          </ion-text>
+        </ion-col>
+  
+        <ion-col>
+          <ion-text>
+            {{item.category}}
+          </ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-text>
+            {{item.status}}
+          </ion-text>
+        </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+</ion-content> 
+
+
+ 
+
+

@@ -1,0 +1,68 @@
+.form-content {
+
+  --background: #0f172a;
+
+}
+
+
+.form-container {
+
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+
+}
+
+
+.form-card {
+
+  background: #1e293b;
+  border-radius: 12px;
+
+}
+
+
+ion-item {
+
+  --background: transparent;
+  margin-bottom: 10px;
+
+}
+
+
+ion-label {
+
+  font-size: 13px;
+  color: #94a3b8;
+
+}
+
+
+ion-input,
+ion-select {
+
+  color: white;
+  font-size: 14px;
+
+}
+
+
+ion-card-title {
+
+  color: white;
+  font-size: 18px;
+
+}
+
+
+ion-card-subtitle {
+
+  color: #94a3b8;
+
+}
+
+
+ion-footer ion-button {
+
+  margin: 10px;
+}

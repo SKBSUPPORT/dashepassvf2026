@@ -1,0 +1,96 @@
+/* SIDEBAR BACKGROUND */
+.menu-dark {
+
+  --background: #0f172a; /* azul oscuro profesional */
+
+}
+
+/* fondo completo del contenido del menú */
+.menu-dark ion-content {
+
+  --background: #0f172a !important;
+
+}
+
+/* lista */
+.menu-dark ion-list {
+
+  background: transparent !important;
+
+}
+
+/* items del menu */
+.menu-dark ion-item {
+
+  --background: transparent !important;
+
+  --color: #cbd5e1;
+
+  --border-color: transparent;
+
+  margin-bottom: 5px;
+
+  border-radius: 8px;
+
+}
+
+/* hover effect */
+.menu-dark ion-item:hover {
+
+  --background: #1e293b;
+
+  --color: #ffffff;
+
+}
+
+/* item seleccionado */
+.menu-dark .selected {
+
+  --background: #2563eb !important;
+
+  --color: #ffffff !important;
+
+  font-weight: 600;
+
+}
+
+/* icon color */
+.menu-dark ion-icon {
+
+  color: #cbd5e1;
+
+}
+
+/* icon cuando esta activo */
+.menu-dark .selected ion-icon {
+
+  color: #ffffff;
+
+}
+
+/* header logo */
+.menu-header {
+
+  padding: 20px;
+
+  text-align: center;
+
+}
+
+/* logo */
+.logo {
+
+  width: 160px;
+
+  margin-bottom: 10px;
+
+}
+
+/* subtitle */
+.subtitle {
+
+  color: #94a3b8;
+
+  font-size: 13px;
+
+}

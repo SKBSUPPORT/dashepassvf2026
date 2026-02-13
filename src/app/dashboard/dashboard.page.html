@@ -1,0 +1,156 @@
+<ion-content class="dashboard-content">
+
+  <ion-grid>
+
+    <ion-row>
+
+      <!-- CLIENTES -->
+      <ion-col size="12" size-md="6" size-lg="3">
+        <div class="stat-card">
+          <ion-icon name="people-outline" class="stat-icon"></ion-icon>
+
+          <div>
+            <div class="stat-number">14</div>
+            <div class="stat-label">Clientes Totales</div>
+          </div>
+        </div>
+      </ion-col>
+
+
+      <!-- DISPOSITIVOS -->
+      <ion-col size="12" size-md="6" size-lg="3">
+        <div class="stat-card">
+          <ion-icon name="hardware-chip-outline" class="stat-icon"></ion-icon>
+
+          <div>
+            <div class="stat-number">6</div>
+            <div class="stat-label">Dispositivos</div>
+          </div>
+        </div>
+      </ion-col>
+
+
+      <!-- INGRESOS -->
+      <ion-col size="12" size-md="6" size-lg="3">
+        <div class="stat-card">
+          <ion-icon name="cash-outline" class="stat-icon"></ion-icon>
+
+          <div>
+            <div class="stat-number">$2069.82</div>
+            <div class="stat-label">Ingresos Mensuales</div>
+          </div>
+        </div>
+      </ion-col>
+
+
+      <!-- ACCESOS -->
+      <ion-col size="12" size-md="6" size-lg="3">
+        <div class="stat-card">
+          <ion-icon name="enter-outline" class="stat-icon"></ion-icon>
+
+          <div>
+            <div class="stat-number">1,842</div>
+            <div class="stat-label">Accesos Hoy</div>
+          </div>
+        </div>
+      </ion-col>
+
+    </ion-row>
+
+
+    <!-- GRAFICA Y ACTIVIDAD -->
+    <ion-row>
+
+      <!-- GRAFICA -->
+      <ion-col size="12" size-lg="8">
+
+        <div class="chart-card">
+
+          <div class="card-title">
+            Actividad de accesos
+          </div>
+
+          <canvas id="accessChart"></canvas>
+
+        </div>
+
+      </ion-col>
+
+
+      <!-- ACTIVIDAD RECIENTE -->
+      <ion-col size="12" size-lg="4">
+
+        <div class="activity-card">
+
+          <div class="card-title">
+            Actividad reciente
+          </div>
+
+          <div class="activity-item">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            Portón abierto - Cliente A
+            <span>Hace 2 min</span>
+          </div>
+
+          <div class="activity-item">
+            <ion-icon name="person-add"></ion-icon>
+            Usuario creado
+            <span>Hace 10 min</span>
+          </div>
+
+          <div class="activity-item alert">
+            <ion-icon name="warning"></ion-icon>
+            Dispositivo offline
+            <span>Hace 30 min</span>
+          </div>
+
+        </div>
+
+      </ion-col>
+
+    </ion-row>
+
+    <!-- GRAFICAS SECUNDARIAS -->
+    <ion-row>
+
+      <!-- TIPOS DE ACCESO -->
+      <ion-col size="12" size-lg="6">
+
+        <div class="chart-card small-chart">
+
+          <div class="card-title">
+            Tipos de acceso
+          </div>
+
+          <div class="chart-wrapper">
+            <canvas id="accessTypeChart"></canvas>
+          </div>
+
+        </div>
+
+      </ion-col>
+
+
+      <!-- ESTADO DE DISPOSITIVOS -->
+      <ion-col size="12" size-lg="6">
+
+        <div class="chart-card">
+
+          <div class="card-title">
+            Estado de dispositivos
+          </div>
+
+          <canvas id="deviceStatusChart"></canvas>
+
+        </div>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+  <div class="footer">
+  You-Pass Admin Dashboard © 2026
+</div>
+
+</ion-content>

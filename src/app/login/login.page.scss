@@ -1,0 +1,34 @@
+.login-background {
+  --background: #f1f5f9;
+}
+
+
+/* ESTE CENTRA TODO */
+.center-wrapper {
+
+  height: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+
+/* CARD */
+.login-card {
+
+  width: 100%;
+  max-width: 420px;
+
+  padding: 30px;
+
+  background: white;
+
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+}

@@ -1,0 +1,164 @@
+
+
+<!-- <form #form="ngForm" (ngSubmit)="register(form)"></form> -->
+<form #form="ngForm">
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="8" size-lg="8" size-xs="8">
+        <div padding>
+          <!--          <ion-item>
+            <ion-input name="id" type="text" placeholder="Codigo Cliente" [(ngModel)]="this.cliente" required>
+            </ion-input>
+          </ion-item> -->
+
+          <ion-item>
+            <ion-label>Cliente</ion-label>
+            <ionic-selectable [items]="clientes" itemValueField="id" itemTextField="name" [canSearch]="true"
+              (onChange)="clienteChange($event)">
+            </ionic-selectable>
+          </ion-item>
+
+        </div>
+        <div padding>
+
+          <input style="display: none" accept=".csv" type="file" (change)="onFileChanged($event)" #fileInput>
+          <ion-button *ngIf="this.boton1" size="small" type="submit" expand="block" slot="end"
+            (click)="fileInput.click()">
+            Cargar
+            <ion-icon name="cloud-upload"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="this.boton2" color="success" size="small" type="submit" expand="block"
+            (click)="validardata()">
+            Validar
+          </ion-button>
+          <ion-button *ngIf="this.boton3" color="success" size="small" type="submit" expand="block"
+            (click)="salvardata()">
+            Salvar
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+
+<ion-content>
+
+
+  <ion-grid class="ion-text-center">
+
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+          <ion-text color="default">
+            Collection autorizados
+          </ion-text>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="header-row">
+
+
+      <ion-col>
+        <ion-text>Filial</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Nivel1</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Nivel2</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Período</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Metros 2</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Saldo anterior</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Saldo actual</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Diferencia</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Status</ion-text>
+      </ion-col>
+
+
+    </ion-row>
+
+
+    <ion-row class="header-text" *ngFor="let carga of this.carga">
+
+
+      <ion-col>
+        <ion-text>
+          {{carga.FILIAL}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.NIVEL1}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.NIVEL2}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.PERIODO}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.METROS2}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.ANTERIOR}}
+        </ion-text>
+      </ion-col>
+
+            <ion-col>
+        <ion-text>
+          {{carga.ACTUAL}}
+        </ion-text>
+      </ion-col>
+
+
+            <ion-col>
+        <ion-text>
+          {{carga.DIFERENCIA}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.status}}
+        </ion-text>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

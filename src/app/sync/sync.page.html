@@ -1,0 +1,140 @@
+
+
+<form #form="ngForm">
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="8" size-lg="8" size-xs="8">
+        <div padding>
+          <ion-item>
+            <ion-label>Cliente</ion-label>
+            <ionic-selectable [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente" [items]="clientes"
+              itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="clienteChange($event)">
+            </ionic-selectable>
+          </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Id inicial</ion-label>
+    <ion-input type="number" placeholder="id inicial" [(ngModel)]="this.inicio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Id final</ion-label>
+    <ion-input type="number" placeholder="id final" [(ngModel)]="this.fin"></ion-input>
+  </ion-item>
+
+  <div class="division">
+
+
+    <ion-button slot="end" size="small" (click)="sincronizar()">
+      <ion-icon name="sync-circle"></ion-icon>
+    </ion-button>
+
+
+    <ion-button slot="end" size="small" (click)="getautorizados()">
+      <ion-icon name="search"></ion-icon>
+    </ion-button>
+
+
+
+
+  </div>
+
+
+  <ion-grid class="ion-text-center">
+
+    <ion-row class="header-row">
+      <ion-col>
+        <ion-text>ID</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>FILIAL</ion-text>
+      </ion-col>
+
+
+      <ion-col>
+        <ion-text>Category</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Ingreso</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Salida</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Nombre</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Status</ion-text>
+      </ion-col>
+
+    </ion-row>
+
+
+    <ion-row class="header-text"
+      *ngFor="let item of this.autorizados | slice:this.sliceini:this.sliceend,let i = index">
+      <ion-col>
+        <ion-text>
+          {{item.ID}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{item.FILIAL}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{item.CATEGORY}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{item.DATE_IN}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{item.DATE_OUT}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{item.NOMBRE}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{item.STATUS}}
+        </ion-text>
+      </ion-col>
+
+    </ion-row>
+
+
+    <ion-infinite-scroll (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content class="infinite" loadingSpinner="bubbles" loadingText="Cargando más información...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </ion-grid>
+
+
+
+</ion-content>

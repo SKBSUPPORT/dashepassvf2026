@@ -1,0 +1,39 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+/www
+
+# dependencies
+/node_modules
+
+# Capacitor / Ionic
+/android
+/ios
+/platforms
+/plugins
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.launch
+
+# angular
+.angular/
+
+# misc
+.sass-cache/
+coverage/
+.DS_Store
+Thumbs.db
+
+# system
+.history/

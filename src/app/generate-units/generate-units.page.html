@@ -1,0 +1,85 @@
+<ion-content class="page-background">
+
+  <div class="page-container">
+
+    <!-- HEADER -->
+    <div class="page-header">
+
+      <div>
+        <div class="page-title">
+          Generación masiva de unidades
+        </div>
+
+        <div class="page-subtitle">
+          Cree casas, apartamentos o unidades automáticamente
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <!-- CARD -->
+    <div class="form-card">
+
+      <!-- CLIENTE -->
+<form #form="ngForm">
+  <ion-item lines="none" class="item-container">
+    <ion-label position="stacked" class="label-title">
+      Cliente
+    </ion-label>
+    <ionic-selectable
+      class="select-custom"
+      [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="cliente"
+      [items]="clientes"
+      itemValueField="id"
+      itemTextField="name"
+      [canSearch]="true"
+      (onChange)="clienteChange($event)">
+    </ionic-selectable>
+  </ion-item>
+</form>
+
+
+      <!-- PREFIJO -->
+      <ion-item>
+        <ion-label position="stacked">Prefijo</ion-label>
+
+        <ion-input
+          [(ngModel)]="prefijo"
+          placeholder="Ejemplo: CASA">
+        </ion-input>
+
+      </ion-item>
+
+
+      <!-- CANTIDAD -->
+      <ion-item>
+        <ion-label position="stacked">Cantidad</ion-label>
+
+        <ion-input
+          type="number"
+          [(ngModel)]="cantidad"
+          placeholder="Ejemplo: 50">
+        </ion-input>
+
+      </ion-item>
+
+
+      <!-- BOTON -->
+      <ion-button
+        expand="block"
+        class="generate-button"
+        (click)="generar()">
+
+        Generar unidades
+
+      </ion-button>
+
+    </div>
+
+  </div>
+
+</ion-content>

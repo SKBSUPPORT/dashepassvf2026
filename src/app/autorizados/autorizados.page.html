@@ -1,0 +1,185 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center">Crear autorizados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <form #form="ngForm" (ngSubmit)="register(form)"></form> -->
+<form #form="ngForm" >
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="8" size-lg="8" size-xs="8">
+        <div padding>
+ <!--          <ion-item>
+            <ion-input name="id" type="text" placeholder="Codigo Cliente" [(ngModel)]="this.cliente" required>
+            </ion-input>
+          </ion-item> -->
+
+          <ion-item>
+            <ion-label>Cliente</ion-label>
+            <ionic-selectable   [items]="clientes" itemValueField="id" itemTextField="name"
+              [canSearch]="true" (onChange)="clienteChange($event)">
+            </ionic-selectable>
+          </ion-item>
+
+        </div>
+        <div padding>
+
+          <input style="display: none" accept=".csv" type="file" (change)="onFileChanged($event)" #fileInput>
+          <ion-button *ngIf="this.boton1" size="small" type="submit" expand="block" slot="end"
+            (click)="fileInput.click()">
+            Cargar
+            <ion-icon name="cloud-upload"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="this.boton2" color="success" size="small" type="submit" expand="block"
+            (click)="validardata()">
+            Validar
+          </ion-button>
+          <ion-button *ngIf="this.boton3" color="success" size="small" type="submit" expand="block"
+            (click)="salvardata()">
+            Salvar
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+
+<ion-content>
+
+
+  <ion-grid class="ion-text-center">
+
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+          <ion-text color="default">
+            Collection autorizados
+          </ion-text>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+<!--     <ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+        <ion-text color="danger">
+          {{this.check}}
+        </ion-text>
+        </ion-title>
+      </ion-col>
+
+    </ion-row> -->
+
+
+
+
+    <ion-row class="header-row">
+
+
+      <ion-col>
+        <ion-text>ID</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Filial</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Categoría</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Nombre</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Identidad</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Observaciones</ion-text>
+      </ion-col>
+      
+      <ion-col>
+        <ion-text>Placa</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Días</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>Teléfono</ion-text>
+      </ion-col>
+
+    </ion-row>
+
+
+    <ion-row class="header-text" *ngFor="let carga of this.carga | slice:this.sliceini:this.sliceend,let i = index">
+
+
+      <ion-col>
+        <ion-text>
+          {{carga.ID}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.FILIAL}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.CATEGORY}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.NOMBRE}}
+        </ion-text>
+      </ion-col>
+      
+      <ion-col>
+        <ion-text>
+          {{carga.IDENT}}
+        </ion-text>
+      </ion-col>
+      
+      <ion-col>
+        <ion-text>
+          {{carga.OBSER}}
+        </ion-text>
+      </ion-col>
+      
+      <ion-col>
+        <ion-text>
+          {{carga.PLACA}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.DAYS}}
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>
+          {{carga.TELEF}}
+        </ion-text>
+      </ion-col>
+
+
+    </ion-row>
+
+    <ion-infinite-scroll (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content class="infinite" loadingSpinner="bubbles" loadingText="Cargando más información...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </ion-grid>
+</ion-content>

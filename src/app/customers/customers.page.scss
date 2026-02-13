@@ -1,0 +1,175 @@
+.clients-content {
+  --background: #f4f7fc;
+  padding: 16px;
+}
+
+
+/* CARD */
+.table-card {
+
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+
+  box-shadow:
+  0 4px 20px rgba(0,0,0,.06);
+
+}
+
+
+/* HEADER */
+.table-header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+
+}
+
+
+.card-title {
+
+  font-size: 18px;
+  font-weight: 600;
+
+}
+
+
+.card-subtitle {
+
+  font-size: 12px;
+  color: #6b7280;
+
+}
+
+
+/* TABLE */
+.table-wrapper {
+
+  overflow-x: auto;
+
+}
+
+
+.header-row {
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  border-radius: 8px;
+
+}
+
+
+.table-row {
+
+  border-bottom: 1px solid #eee;
+
+  font-size: 13px;
+
+  align-items: center;
+
+}
+
+
+.table-row:hover {
+
+  background: #f9fafb;
+
+}
+
+
+/* CLIENT NAME */
+.client-name {
+
+  font-weight: 500;
+
+}
+
+
+/* STATUS */
+.status-badge {
+
+  padding: 4px 10px;
+
+  border-radius: 12px;
+
+  font-size: 11px;
+  font-weight: 500;
+
+}
+
+
+.status-badge.active {
+
+  background: #dcfce7;
+  color: #166534;
+
+}
+
+
+.status-badge.inactive {
+
+  background: #fee2e2;
+  color: #991b1b;
+
+}
+
+
+/* SEARCH */
+.search-bar {
+
+  --background: white;
+  --border-radius: 10px;
+
+}
+
+.main-footer ion-toolbar {
+
+  --background: #ffffff;
+
+  border-top: 1px solid #e5e7eb;
+
+  padding: 6px;
+
+}
+
+
+.footer-text {
+
+  text-align: center;
+
+  font-size: 12px;
+
+  color: black;
+
+}
+
+
+
+.main-footer ion-toolbar {
+
+  --background: transparent;
+
+}
+
+.footer-text {
+
+  opacity: .7;
+
+}
+
+/* BUTTON */
+ion-button {
+
+  height: 28px;
+  font-size: 12px;
+
+}
+
+
