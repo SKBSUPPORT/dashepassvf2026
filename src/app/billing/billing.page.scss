@@ -1,0 +1,49 @@
+.page { --background: #f4f4f4; }
+
+.card-actions, .card-list {
+  border-radius: 12px;
+  margin: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.sub {
+  margin-top: 4px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.sep { margin: 0 6px; opacity: 0.8; }
+
+.warn { color: #b36b00; font-weight: 700; }
+
+.dates {
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: 0.9;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+}
+
+.hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #444;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

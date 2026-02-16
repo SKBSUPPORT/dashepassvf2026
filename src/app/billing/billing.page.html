@@ -1,0 +1,119 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Billing</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment value="ALL" (ionChange)="onSegmentChange($event)">
+      <ion-segment-button value="ALL"><ion-label>Todos</ion-label></ion-segment-button>
+      <ion-segment-button value="ACTIVE"><ion-label>Activos</ion-label></ion-segment-button>
+      <ion-segment-button value="SUSPENDED"><ion-label>Suspendidos</ion-label></ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="page">
+  <ion-card class="card-actions">
+    <ion-card-header>
+      <ion-card-title>Acciones</ion-card-title>
+      <ion-card-subtitle>Configurar billing, generar facturas y registrar pagos</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-button expand="block" (click)="generateMonthInvoices()">
+        Generar facturas del mes
+      </ion-button>
+      <ion-button expand="block" fill="outline" (click)="load()">
+        Refrescar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="card-list">
+    <ion-card-header>
+      <ion-card-title>Clientes</ion-card-title>
+      <ion-card-subtitle>Total: {{view.length}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item *ngFor="let c of view">
+          <ion-label>
+            <div class="row">
+              <div class="title">{{ c.id }}</div>
+              <ion-badge [color]="(c.status==='SUSPENDED') ? 'danger' : 'success'">
+                {{ c.status || 'ACTIVE' }}
+              </ion-badge>
+            </div>
+
+            <div class="sub">
+              <b>Admin:</b> {{ c.adminEmail || '-' }}
+            </div>
+
+            <div class="sub">
+              <b>Billing:</b>
+              <span *ngIf="hasBillingConfigured(c)">{{ money(c) }}</span>
+              <span *ngIf="!hasBillingConfigured(c)" class="warn">Sin configurar</span>
+              <span class="sep">•</span>
+              <span>Periodo: {{ c.billing?.periodKey || '-' }}</span>
+            </div>
+
+            <div class="dates">
+              <div><b>Issue:</b> {{ fmt(c.billing?.issueDate) }}</div>
+              <div><b>Due:</b> {{ fmt(c.billing?.dueDate) }}</div>
+              <div><b>Gracia:</b> {{ fmt(c.billing?.graceUntil) }}</div>
+            </div>
+
+            <div class="hint" *ngIf="c.message">{{ c.message }}</div>
+          </ion-label>
+
+          <ion-buttons slot="end" class="btns">
+            <ion-button size="small" fill="outline" (click)="editRootStatus(c)">
+              Estado
+            </ion-button>
+
+            <ion-button size="small" fill="outline" (click)="configureBilling(c)">
+              Billing
+            </ion-button>
+
+            <ion-button size="small" [disabled]="!c.billing?.activeInvoiceId" (click)="markPaid(c)">
+              Pagado
+            </ion-button>
+          </ion-buttons>
+
+
+  <!-- 👇 AQUÍ VAN LAS FACTURAS -->
+  <ion-list lines="none" class="invoice-list">
+
+    <ion-item *ngFor="let inv of c.invoices">
+
+      <ion-label>
+        {{ inv.period }} —
+        {{ inv.amount }} {{ inv.currency }}
+      </ion-label>
+
+      <ion-badge color="success" *ngIf="inv.status === 'PAID'">
+        PAGADA
+      </ion-badge>
+
+      <ion-badge color="warning" *ngIf="inv.status === 'PENDING'">
+        PENDIENTE
+      </ion-badge>
+
+      <ion-badge color="danger" *ngIf="inv.status === 'OVERDUE'">
+        VENCIDA
+      </ion-badge>
+
+    </ion-item>
+
+  </ion-list>
+
+        </ion-item>
+
+        <ion-item *ngIf="view.length === 0">
+          <ion-label>No hay registros.</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

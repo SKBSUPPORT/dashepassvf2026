@@ -104,6 +104,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
+  },
+  {
+    path: 'billing',
+    loadChildren: () => import('./billing/billing.module').then( m => m.BillingPageModule)
   }
 
 

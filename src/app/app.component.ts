@@ -33,6 +33,7 @@ export class AppComponent {
     { title: 'Crear cliente', url: '/folder', icon: 'cube' },
     { title: 'Clientes', url: '/customers', icon: 'settings' },
     { title: 'Control de servicio', url: '/control-servicio', icon: 'shield-checkmark-outline' },
+    { title: 'Facturación', url: '/billing', icon: 'options' },
     { title: 'Crear usuarios', url: '/generate-units', icon: 'person' },
     { title: 'Cargar usuarios', url: '/upload-users', icon: 'person' },
     { title: 'Usuarios', url: '/users', icon: 'people' },
