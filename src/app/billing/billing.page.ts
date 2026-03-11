@@ -214,7 +214,7 @@ export class BillingPage implements OnInit {
 
     const alert = await this.alertCtrl.create({
       header: 'Generar facturas',
-      message: `Creará facturas <b>${periodKey}</b> para clientes con billing configurado.`,
+      message: `Creará facturas ${periodKey} para clientes con billing configurado.`,
       buttons: [
         { text: 'Cancelar', role: 'cancel' },
         {
@@ -383,7 +383,7 @@ export class BillingPage implements OnInit {
   async editRootStatus(c: CustomerStatusDoc) {
     const alert = await this.alertCtrl.create({
       header: 'Estado de servicio (bloqueo)',
-      message: `Cliente: <b>${c.id}</b>`,
+      message: `Cliente: ${c.id}`,
       inputs: [
         { type: 'radio', name: 'st', label: 'ACTIVE', value: 'ACTIVE', checked: (c.status || 'ACTIVE') === 'ACTIVE' },
         { type: 'radio', name: 'st', label: 'SUSPENDED', value: 'SUSPENDED', checked: c.status === 'SUSPENDED' },

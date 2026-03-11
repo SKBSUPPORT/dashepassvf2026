@@ -107,7 +107,8 @@ const routes: Routes = [
   },
   {
     path: 'billing',
-    loadChildren: () => import('./billing/billing.module').then( m => m.BillingPageModule)
+    loadChildren: () => import('./billing/billing.module').then( m => m.BillingPageModule),
+    canActivate: [AuthGuard]
   }
 
 

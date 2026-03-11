@@ -1,51 +1,81 @@
 <ion-content class="login-background" fullscreen="true">
 
+  <div class="center-wrapper">
 
-  <ion-card>
+    <div class="auth-layout">
 
+      <div class="auth-brand">
+        <div class="auth-logo">
+          <ion-icon name="home-outline"></ion-icon>
+        </div>
+        <h1 class="auth-title">Epass Admin</h1>
+        <p class="auth-subtitle">
+          Gate access control for modern communities.
+        </p>
+      </div>
 
-    <div class="center-wrapper">
+      <ion-card class="login-card">
 
-      <div class="login-card">
-
-
-        <ion-card-header>
-
-          <h2>Iniciar sesión</h2>
-
-          <p>Ingrese sus credenciales</p>
-
+        <ion-card-header class="login-header">
+          <h2>Bienvenido</h2>
+          <p>Inicia sesión para administrar accesos y clientes.</p>
         </ion-card-header>
 
-        <ion-item lines="none">
-          <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-card-content>
 
-          <ion-input [(ngModel)]="email" placeholder="Correo">
-          </ion-input>
+          <div class="login-form">
+            <ion-item lines="none">
+              <ion-icon name="mail-outline" slot="start"></ion-icon>
+              <ion-input
+                [(ngModel)]="email"
+                placeholder="Correo"
+                type="email">
+              </ion-input>
+            </ion-item>
+            <div class="field-error" *ngIf="emailError">
+              {{ emailError }}
+            </div>
 
-        </ion-item>
+            <ion-item lines="none">
+              <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+              <ion-input
+                [(ngModel)]="password"
+                [type]="showPassword ? 'text' : 'password'"
+                placeholder="Contraseña"
+                (keyup.enter)="login()">
+              </ion-input>
+              <ion-icon
+                slot="end"
+                [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+                (click)="togglePassword()"
+                class="password-toggle">
+              </ion-icon>
+            </ion-item>
+            <div class="field-error" *ngIf="passwordError">
+              {{ passwordError }}
+            </div>
 
+            <div class="login-actions">
+              <ion-button
+                expand="block"
+                (click)="login()"
+                [disabled]="!email || !password || isLoading">
+                <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+                <span *ngIf="!isLoading">Iniciar sesión</span>
+              </ion-button>
+            </div>
 
-        <ion-item lines="none">
-          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <p class="helper-text">
+              ¿Problemas para ingresar? Contacta a tu administrador de Epass.
+            </p>
+          </div>
 
-          <ion-input [(ngModel)]="password" [type]="showPassword ? 'text' : 'password'"  placeholder="Contraseña">
-          </ion-input>
-          <ion-icon slot="end" [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" (click)="togglePassword()"
-            style="cursor:pointer;">
-          </ion-icon>
+        </ion-card-content>
 
-        </ion-item>
-
-
-        <ion-button expand="block" (click)="login()">
-          Iniciar sesión
-        </ion-button>
-
-      </div>
+      </ion-card>
 
     </div>
 
-  </ion-card>
+  </div>
 
 </ion-content>

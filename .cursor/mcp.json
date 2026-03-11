@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "firebase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firebase-tools@latest",
+        "mcp",
+        "--dir", "c:\\ionic2025\\dashepassvf2026",
+        "--only", "firestore"
+      ]
+    }
+  }
+}

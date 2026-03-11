@@ -1,117 +1,89 @@
+<ion-content class="authlist-content">
+  <div class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Autorizados</h1>
+      <p class="page-breadcrumb">Epass Admin</p>
+    </header>
 
+    <!-- Selector de cliente -->
+    <div class="saas-card client-selector-card">
+      <form #form="ngForm">
+        <ion-item lines="none" class="selector-item">
+          <ion-label position="stacked">Cliente</ion-label>
+          <ionic-selectable
+            [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="cliente"
+            [items]="clientes"
+            itemValueField="id"
+            itemTextField="name"
+            [canSearch]="true"
+            (onChange)="clienteChange($event)">
+          </ionic-selectable>
+        </ion-item>
+      </form>
+    </div>
 
-<form #form="ngForm">
-  <ion-grid>
-    <ion-row color="primary" justify-content-center>
-      <ion-col align-self-center size-md="8" size-lg="8" size-xs="8">
-        <div padding>
+    <!-- Sin cliente seleccionado -->
+    <div *ngIf="!clientecarga" class="empty-state">
+      <ion-icon name="people-outline" class="empty-icon"></ion-icon>
+      <h2 class="empty-title">Selecciona un cliente</h2>
+      <p class="empty-subtitle">Elige un cliente arriba para ver la lista de autorizados.</p>
+    </div>
 
-          <!-- 
-           <ion-item>
-            <ion-input  name="id" type="text" placeholder="Codigo Cliente" [(ngModel)]="this.cliente"></ion-input>
-          </ion-item>  -->
-
-          <ion-item>
-            <ion-label>Cliente</ion-label>
-            <ionic-selectable [ngModelOptions]="{standalone: true}" [(ngModel)]="cliente" [items]="clientes"
-              itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="clienteChange($event)">
-            </ionic-selectable>
-          </ion-item>
-
+    <!-- Con cliente: tabla -->
+    <div *ngIf="clientecarga" class="table-card saas-card">
+      <div class="table-header">
+        <div>
+          <h2 class="card-title">Listado de autorizados</h2>
+          <p class="card-subtitle">{{ clientecarga?.name || '' }}</p>
         </div>
-        <!--         <div padding>
-          <ion-button (click)="getusers()"  size="small" type="submit"  expand="block">Buscar</ion-button>
-        </div> -->
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</form>
+        <div class="table-actions">
+          <ion-button size="small" fill="outline" (click)="getusers()">
+            <ion-icon name="refresh-outline"></ion-icon>
+            Actualizar
+          </ion-button>
+          <ion-button size="small" fill="outline" (click)="exportToExcel($event)">
+            <ion-icon name="download-outline"></ion-icon>
+            Exportar
+          </ion-button>
+        </div>
+      </div>
 
-<ion-content>
+      <div class="table-wrapper">
+        <ion-grid>
+          <ion-row class="header-row">
+            <ion-col>ID</ion-col>
+            <ion-col>Filial</ion-col>
+            <ion-col>Category</ion-col>
+            <ion-col>Nombre</ion-col>
+            <ion-col>Status</ion-col>
+          </ion-row>
+          <ion-row
+            class="table-row"
+            *ngFor="let item of autorizados | slice:sliceini:sliceend; let i = index">
+            <ion-col>{{ item.ID }}</ion-col>
+            <ion-col>{{ item.FILIAL }}</ion-col>
+            <ion-col>{{ item.CATEGORY }}</ion-col>
+            <ion-col class="col-name">{{ item.NOMBRE }}</ion-col>
+            <ion-col>
+              <span class="status-badge" [class.active]="item.STATUS === 'Activo'" [class.inactive]="item.STATUS !== 'Activo'">
+                {{ item.STATUS }}
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
-  <div class="division">
+        <div *ngIf="autorizados?.length === 0" class="empty-table">
+          No hay autorizados para este cliente.
+        </div>
+      </div>
 
-    <ion-button slot="end" size="small" (click)="exportToExcel($event)">
-      <ion-icon name="download"></ion-icon>
-    </ion-button>
-
-    <ion-button slot="end" size="small" (click)="getusers()">
-      <ion-icon name="refresh"></ion-icon>
-    </ion-button>
-
-
+      <ion-infinite-scroll (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="crescent"
+          loadingText="Cargando más...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </div>
   </div>
-
-
-  <ion-grid class="ion-text-center">
-
-    <ion-row class="header-row">
-      <ion-col>
-        <ion-text>ID</ion-text>
-      </ion-col>
-
-      <ion-col>
-        <ion-text>FILIAL</ion-text>
-      </ion-col>
-
-
-      <ion-col>
-        <ion-text>Category</ion-text>
-      </ion-col>
-
-      <ion-col>
-        <ion-text>Nombre</ion-text>
-      </ion-col>
-
-      <ion-col>
-        <ion-text>Status</ion-text>
-      </ion-col>
-
-    </ion-row>
-
-
-    <ion-row class="header-text"
-      *ngFor="let item of this.autorizados | slice:this.sliceini:this.sliceend,let i = index">
-      <ion-col>
-        <ion-text>
-          {{item.ID}}
-        </ion-text>
-      </ion-col>
-
-      <ion-col>
-        <ion-text>
-          {{item.FILIAL}}
-        </ion-text>
-      </ion-col>
-
-      <ion-col>
-        <ion-text>
-          {{item.CATEGORY}}
-        </ion-text>
-      </ion-col>
-
-      <ion-col>
-        <ion-text>
-          {{item.NOMBRE}}
-        </ion-text>
-      </ion-col>
-
-      <ion-col>
-        <ion-text>
-          {{item.STATUS}}
-        </ion-text>
-      </ion-col>
-
-    </ion-row>
-
-
-    <ion-infinite-scroll (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content class="infinite" loadingSpinner="bubbles" loadingText="Cargando más información...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-
-  </ion-grid>
-
-
-
 </ion-content>

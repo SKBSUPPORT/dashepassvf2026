@@ -1,68 +1,69 @@
-.form-content {
-
-  --background: #0f172a;
-
+/* ========== Editcustomers - mismo estilo SaaS ========== */
+.editcustomers-content {
+  --background: #f9fafb;
+  --padding-top: 0;
+  --padding-bottom: 24px;
+  --padding-start: 0;
+  --padding-end: 0;
 }
-
-
-.form-container {
-
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-
-}
-
 
 .form-card {
-
-  background: #1e293b;
-  border-radius: 12px;
-
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
 }
 
-
-ion-item {
-
-  --background: transparent;
-  margin-bottom: 10px;
-
+.form-card ion-card-header {
+  padding-bottom: 8px;
 }
 
-
-ion-label {
-
-  font-size: 13px;
-  color: #94a3b8;
-
-}
-
-
-ion-input,
-ion-select {
-
-  color: white;
-  font-size: 14px;
-
-}
-
-
-ion-card-title {
-
-  color: white;
+.form-card ion-card-title {
   font-size: 18px;
-
+  font-weight: 600;
+  color: #111827;
 }
 
-
-ion-card-subtitle {
-
-  color: #94a3b8;
-
+.form-card ion-card-subtitle {
+  font-size: 13px;
+  color: #6b7280;
 }
 
+.form-list {
+  background: transparent;
+  padding: 0;
+}
 
-ion-footer ion-button {
+.form-list ion-item {
+  --background: #f9fafb;
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 12px;
+}
 
-  margin: 10px;
+.form-list ion-item ion-label[position="stacked"] {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-list ion-input,
+.form-list ion-select {
+  --color: #111827;
+  --placeholder-color: #9ca3af;
+  font-size: 14px;
+}
+
+.form-list ion-select {
+  max-width: 100%;
+}
+
+.submit-btn {
+  --border-radius: 12px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 8px;
 }

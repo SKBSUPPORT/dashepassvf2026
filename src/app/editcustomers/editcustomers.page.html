@@ -1,118 +1,55 @@
+<ion-content class="editcustomers-content">
+  <div class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Editar cliente</h1>
+      <p class="page-breadcrumb">Epass Admin</p>
+    </header>
 
-
-<ion-content class="form-content">
-
-  <div class="form-container">
-
-    <!-- CARD -->
-    <ion-card class="form-card">
-
+    <ion-card class="form-card saas-card">
       <ion-card-header>
-
-        <ion-card-title>
-          Información del cliente
-        </ion-card-title>
-
-        <ion-card-subtitle>
-          Complete los datos para crear el cliente
-        </ion-card-subtitle>
-
+        <ion-card-title>Información del cliente</ion-card-title>
+        <ion-card-subtitle>Complete o modifique los datos del cliente</ion-card-subtitle>
       </ion-card-header>
 
-
       <ion-card-content>
-
-        <ion-list lines="none">
-
+        <ion-list lines="none" class="form-list">
           <ion-item>
             <ion-label position="stacked">Código Cliente</ion-label>
-            <ion-input [(ngModel)]="newcode"></ion-input>
+            <ion-input [(ngModel)]="newcode" placeholder="Código"></ion-input>
           </ion-item>
-
-
           <ion-item>
             <ion-label position="stacked">Nombre</ion-label>
-            <ion-input [(ngModel)]="newname"></ion-input>
+            <ion-input [(ngModel)]="newname" placeholder="Nombre"></ion-input>
           </ion-item>
-
-
           <ion-item>
             <ion-label position="stacked">País</ion-label>
-            <ion-input [(ngModel)]="newpais"></ion-input>
+            <ion-input [(ngModel)]="newpais" placeholder="País"></ion-input>
           </ion-item>
-
-
           <ion-item>
             <ion-label position="stacked">Email</ion-label>
-            <ion-input [(ngModel)]="newemail"></ion-input>
+            <ion-input type="email" [(ngModel)]="newemail" placeholder="Email"></ion-input>
           </ion-item>
-
-
           <ion-item>
             <ion-label position="stacked">Latitud</ion-label>
-            <ion-input [(ngModel)]="latitud"></ion-input>
+            <ion-input [(ngModel)]="latitud" placeholder="Latitud"></ion-input>
           </ion-item>
-
-
           <ion-item>
             <ion-label position="stacked">Longitud</ion-label>
-            <ion-input [(ngModel)]="longitud"></ion-input>
+            <ion-input [(ngModel)]="longitud" placeholder="Longitud"></ion-input>
           </ion-item>
-
-
           <ion-item>
             <ion-label position="stacked">Status</ion-label>
-
-            <ion-select [(ngModel)]="status">
-
-              <ion-select-option value="Activo">
-                Activo
-              </ion-select-option>
-
-              <ion-select-option value="Inactivo">
-                Inactivo
-              </ion-select-option>
-
+            <ion-select [(ngModel)]="status" placeholder="Seleccionar">
+              <ion-select-option value="Activo">Activo</ion-select-option>
+              <ion-select-option value="Inactivo">Inactivo</ion-select-option>
             </ion-select>
-
           </ion-item>
-
         </ion-list>
 
+        <ion-button expand="block" (click)="postConfirm()" class="submit-btn">
+          Guardar Cliente
+        </ion-button>
       </ion-card-content>
-
-        <ion-button
-    expand="block"
-    (click)="postConfirm()"
-    class="ion-margin-top ion-margin-bottom">
-
-    Guardar Cliente
-
-  </ion-button>
-
     </ion-card>
-
   </div>
-
-
-
-
 </ion-content>
-
-
-<!-- FOOTER -->
-<ion-footer>
-
-  <ion-toolbar>
-
-    <ion-button expand="block" (click)="postConfirm()">
-
-      Guardar Cliente
-
-    </ion-button>
-
-  </ion-toolbar>
-
-</ion-footer>
-
-

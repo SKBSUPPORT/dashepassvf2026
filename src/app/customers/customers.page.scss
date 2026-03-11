@@ -1,175 +1,150 @@
 .clients-content {
-  --background: #f4f7fc;
-  padding: 16px;
+  --background: #f9fafb;
+  --padding-top: 0;
+  --padding-bottom: 24px;
+  --padding-start: 0;
+  --padding-end: 0;
 }
 
+.search-row {
+  margin-bottom: 20px;
+}
 
-/* CARD */
+.search-bar {
+  --background: #ffffff;
+  --border-radius: 12px;
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  max-width: 400px;
+}
+
 .table-card {
-
-  background: white;
-  border-radius: 14px;
-  padding: 16px;
-
-  box-shadow:
-  0 4px 20px rgba(0,0,0,.06);
-
+  padding: 24px;
 }
 
-
-/* HEADER */
 .table-header {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 16px;
-
+  margin-bottom: 20px;
 }
-
 
 .card-title {
-
   font-size: 18px;
   font-weight: 600;
-
+  color: #111827;
+  margin: 0 0 4px;
 }
-
 
 .card-subtitle {
-
-  font-size: 12px;
+  font-size: 13px;
   color: #6b7280;
-
+  margin: 0;
 }
 
-
-/* TABLE */
 .table-wrapper {
-
   overflow-x: auto;
-
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
 }
-
 
 .header-row {
-
-  background: #2563eb;
-  color: white;
-
+  background: #f8fafc;
+  color: #475569;
   font-size: 12px;
   font-weight: 600;
-
-  border-radius: 8px;
-
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
 }
-
 
 .table-row {
-
-  border-bottom: 1px solid #eee;
-
+  border-bottom: 1px solid #f1f5f9;
   font-size: 13px;
-
   align-items: center;
-
+  padding: 12px 16px;
+  transition: background 0.15s;
 }
-
 
 .table-row:hover {
-
-  background: #f9fafb;
-
+  background: #f8fafc;
 }
 
+.table-row:last-child {
+  border-bottom: none;
+}
 
-/* CLIENT NAME */
 .client-name {
-
   font-weight: 500;
-
+  color: #111827;
 }
 
-
-/* STATUS */
 .status-badge {
-
   padding: 4px 10px;
-
-  border-radius: 12px;
-
+  border-radius: 999px;
   font-size: 11px;
-  font-weight: 500;
-
+  font-weight: 600;
 }
-
 
 .status-badge.active {
-
   background: #dcfce7;
   color: #166534;
-
 }
-
 
 .status-badge.inactive {
-
   background: #fee2e2;
   color: #991b1b;
-
 }
 
-
-/* SEARCH */
-.search-bar {
-
-  --background: white;
-  --border-radius: 10px;
-
-}
-
-.main-footer ion-toolbar {
-
-  --background: #ffffff;
-
-  border-top: 1px solid #e5e7eb;
-
-  padding: 6px;
-
-}
-
-
-.footer-text {
-
+.page-footer {
   text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
 
+.table-card ion-button {
+  --border-radius: 8px;
+  font-weight: 500;
+}
+
+.col-contract {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.contract-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 12px;
-
-  color: black;
-
+  color: #2563eb;
+  text-decoration: none;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-
-
-.main-footer ion-toolbar {
-
-  --background: transparent;
-
+.contract-link:hover {
+  text-decoration: underline;
 }
 
-.footer-text {
-
-  opacity: .7;
-
+.contract-link ion-icon {
+  flex-shrink: 0;
+  font-size: 16px;
 }
 
-/* BUTTON */
-ion-button {
-
-  height: 28px;
-  font-size: 12px;
-
+.btn-replace {
+  font-size: 11px;
+  --padding-start: 6px;
+  --padding-end: 6px;
 }
 
-
+.btn-send-email {
+  font-size: 11px;
+  --padding-start: 6px;
+  --padding-end: 6px;
+}

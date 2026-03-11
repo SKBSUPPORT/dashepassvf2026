@@ -1,35 +1,27 @@
-<!-- SEARCH -->
-<form #form="ngForm">
-  <ion-grid>
-    <ion-row justify-content-center>
-      <ion-col size="12" size-md="6" size-lg="5">
-
-        <ion-searchbar
-          mode="ios"
-          class="search-bar"
-          (ionInput)="getItems($event)"
-          placeholder="Buscar cliente..."
-          show-clear-button="focus">
-        </ion-searchbar>
-
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</form>
-
-
-<!-- CONTENT -->
 <ion-content class="clients-content">
+  <div class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Clientes</h1>
+      <p class="page-breadcrumb">Epass Admin</p>
+    </header>
 
-  <div class="table-card">
+    <form #form="ngForm" class="search-row">
+      <ion-searchbar
+        mode="ios"
+        class="search-bar"
+        (ionInput)="getItems($event)"
+        placeholder="Buscar cliente..."
+        show-clear-button="focus">
+      </ion-searchbar>
+    </form>
 
-    <!-- TITLE -->
-    <div class="table-header">
-      <div>
-        <div class="card-title">Clientes</div>
-        <div class="card-subtitle">Gestión de clientes registrados</div>
+    <div class="table-card saas-card">
+      <div class="table-header">
+        <div>
+          <h2 class="card-title">Listado de clientes</h2>
+          <p class="card-subtitle">Gestión de clientes registrados</p>
+        </div>
       </div>
-    </div>
 
 
     <!-- TABLE -->
@@ -37,86 +29,89 @@
 
       <ion-grid>
 
+        <!-- Hidden file input for contract upload -->
+        <input
+          type="file"
+          id="contract-file-input"
+          accept=".pdf,.doc,.docx"
+          style="display: none;"
+          (change)="onContractFileSelected($event)">
+
         <!-- HEADER -->
         <ion-row class="header-row">
-
           <ion-col size="2">Código</ion-col>
-
-          <ion-col size="4">Cliente</ion-col>
-
+          <ion-col size="3">Cliente</ion-col>
           <ion-col size="2">País</ion-col>
-
           <ion-col size="2">Estado</ion-col>
-
-          <ion-col size="2">Acción</ion-col>
-
+          <ion-col size="2">Contrato</ion-col>
+          <ion-col size="1">Acción</ion-col>
         </ion-row>
 
-
         <!-- ROWS -->
-        <ion-row
-          class="table-row"
-          *ngFor="let item of clients2">
-
+        <ion-row class="table-row" *ngFor="let item of clients2">
+          <ion-col size="2">{{ item.id }}</ion-col>
+          <ion-col size="3" class="client-name">{{ item.nombre }}</ion-col>
+          <ion-col size="2">{{ item.pais }}</ion-col>
           <ion-col size="2">
-            {{item.id}}
-          </ion-col>
-
-          <ion-col size="4" class="client-name">
-            {{item.nombre}}
-          </ion-col>
-
-          <ion-col size="2">
-            {{item.pais}}
-          </ion-col>
-
-
-          <!-- STATUS BADGE -->
-          <ion-col size="2">
-
             <span
               class="status-badge"
-              [class.active]="item.status == 'Activo'"
-              [class.inactive]="item.status != 'Activo'">
-
-              {{item.status}}
-
+              [class.active]="item.status?.toString().toLowerCase() === 'activo'"
+              [class.inactive]="item.status?.toString().toLowerCase() !== 'activo'">
+              {{ item.status }}
             </span>
-
           </ion-col>
-
-
-          <!-- BUTTON -->
-          <ion-col size="2">
-
+          <ion-col size="2" class="col-contract">
             <ion-button
+              *ngIf="!item.contractUrl"
               size="small"
               fill="outline"
-              (click)="edit(item)">
-
-              Editar
-
+              [disabled]="uploadingContract"
+              (click)="triggerContractInput(item)">
+              <ion-icon name="document-attach-outline"></ion-icon>
+              Cargar
             </ion-button>
-
+            <ng-container *ngIf="item.contractUrl">
+              <a
+                [href]="item.contractUrl"
+                target="_blank"
+                rel="noopener"
+                class="contract-link">
+                <ion-icon name="document-text-outline"></ion-icon>
+                {{ item.contractFileName || 'Ver' }}
+              </a>
+              <ion-button
+                size="small"
+                fill="outline"
+                (click)="sendContractByEmail(item)"
+                class="btn-send-email"
+                [title]="item.email ? 'Enviar contrato al correo del cliente' : 'Cliente sin email asociado'">
+                <ion-icon name="mail-outline"></ion-icon>
+                Enviar
+              </ion-button>
+              <ion-button
+                size="small"
+                fill="clear"
+                [disabled]="uploadingContract"
+                (click)="triggerContractInput(item)"
+                class="btn-replace">
+                Reemplazar
+              </ion-button>
+            </ng-container>
           </ion-col>
-
+          <ion-col size="1">
+            <ion-button size="small" fill="outline" (click)="edit(item)">
+              Editar
+            </ion-button>
+          </ion-col>
         </ion-row>
 
       </ion-grid>
 
     </div>
-
-  </div>
-</ion-content>
-
-<ion-footer class="main-footer">
-
-  <ion-toolbar>
-
-    <div class="footer-text">
-      You-Pass Admin Dashboard © 2026
     </div>
 
-  </ion-toolbar>
-
-</ion-footer>
+    <footer class="page-footer">
+      Epass Admin Dashboard © 2026
+    </footer>
+  </div>
+</ion-content>

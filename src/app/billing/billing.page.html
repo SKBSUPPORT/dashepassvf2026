@@ -1,19 +1,19 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>Billing</ion-title>
-  </ion-toolbar>
+<ion-content class="billing-content">
+  <div class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Facturación</h1>
+      <p class="page-breadcrumb">Epass Admin</p>
+    </header>
 
-  <ion-toolbar>
-    <ion-segment value="ALL" (ionChange)="onSegmentChange($event)">
-      <ion-segment-button value="ALL"><ion-label>Todos</ion-label></ion-segment-button>
-      <ion-segment-button value="ACTIVE"><ion-label>Activos</ion-label></ion-segment-button>
-      <ion-segment-button value="SUSPENDED"><ion-label>Suspendidos</ion-label></ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-header>
+    <div class="segment-wrap">
+      <ion-segment value="ALL" (ionChange)="onSegmentChange($event)" class="billing-segment">
+        <ion-segment-button value="ALL"><ion-label>Todos</ion-label></ion-segment-button>
+        <ion-segment-button value="ACTIVE"><ion-label>Activos</ion-label></ion-segment-button>
+        <ion-segment-button value="SUSPENDED"><ion-label>Suspendidos</ion-label></ion-segment-button>
+      </ion-segment>
+    </div>
 
-<ion-content class="page">
-  <ion-card class="card-actions">
+  <ion-card class="card-actions saas-card">
     <ion-card-header>
       <ion-card-title>Acciones</ion-card-title>
       <ion-card-subtitle>Configurar billing, generar facturas y registrar pagos</ion-card-subtitle>
@@ -29,7 +29,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card class="card-list">
+  <ion-card class="card-list saas-card">
     <ion-card-header>
       <ion-card-title>Clientes</ion-card-title>
       <ion-card-subtitle>Total: {{view.length}}</ion-card-subtitle>
@@ -116,4 +116,5 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  </div>
 </ion-content>

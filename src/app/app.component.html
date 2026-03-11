@@ -1,20 +1,19 @@
 <ion-app>
 
-  <ion-split-pane contentId="main-content" >
+  <ion-split-pane contentId="main-content" when="md">
     <!-- SIDEBAR -->
-     <!-- *ngIf="showMenu" -->
-    <ion-menu contentId="main-content" type="overlay" class="menu-dark" >
+    <ion-menu *ngIf="showMenu" contentId="main-content" type="overlay" class="menu-dark">
       <ion-content>
         <!-- LOGO -->
         <div class="menu-header">
           <img src="assets/logo.jpeg" class="logo">
-          <p class="subtitle">Admin Dashboard</p>
+          <p class="subtitle">Epass Admin</p>
         </div>
 
-        <!-- MENU -->
-        <ion-list>
+        <!-- MENU (agrupado por categoría) -->
+        <ion-list class="menu-list">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="true"
               routerLinkActive="selected" class="menu-item">
               <ion-icon slot="start" [name]="p.icon">
               </ion-icon>
@@ -31,39 +30,31 @@
     <!-- MAIN CONTENT -->
     <div class="main-area" id="main-content">
 
-      <!-- TOP HEADER -->
-      <ion-header>
-
+      <!-- TOP HEADER BAR - SaaS style -->
+      <ion-header *ngIf="showMenu" class="main-header">
         <ion-toolbar class="main-toolbar">
-
           <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+            <ion-menu-button class="menu-btn"></ion-menu-button>
           </ion-buttons>
-
-          <ion-title>Dashboard</ion-title>
-
-          <ion-buttons slot="end">
-
-<!--             <ion-button>
-              <ion-icon name="notifications-outline"></ion-icon>
-            </ion-button> -->
-
-            <ion-button (click)="logout()" color="primary">
-              <ion-icon name="exit-outline"></ion-icon>
+          <ion-title class="header-title">{{ pageTitle }}</ion-title>
+          <ion-buttons slot="end" class="header-actions">
+            <ion-button fill="clear" class="icon-btn">
+              <ion-icon name="search-outline"></ion-icon>
             </ion-button>
-
+            <ion-button fill="clear" class="icon-btn">
+              <ion-icon name="notifications-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" class="icon-btn avatar-btn" (click)="logout()">
+              <ion-icon name="person-circle-outline"></ion-icon>
+            </ion-button>
           </ion-buttons>
-
         </ion-toolbar>
-
       </ion-header>
 
 
-      <!-- ROUTER CONTENT -->
-      <ion-content>
-
+      <!-- PAGE CONTENT -->
+      <ion-content class="main-content">
         <ion-router-outlet></ion-router-outlet>
-
       </ion-content>
 
     </div>

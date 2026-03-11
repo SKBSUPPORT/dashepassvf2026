@@ -1,12 +1,19 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage implements AfterViewInit {
+export class DashboardPage implements AfterViewInit, OnInit {
+
+  totalCustomers = 0;
+
+  ngOnInit() {
+    this.loadTotalCustomers();
+  }
 
   ngAfterViewInit() {
 
@@ -14,6 +21,20 @@ export class DashboardPage implements AfterViewInit {
     this.createAccessTypeChart();
     this.createDeviceStatusChart();
 
+  }
+
+  async loadTotalCustomers() {
+    try {
+      const snap = await firebase.firestore()
+        .collection('condominios')
+        .where('status', '==', 'activo')
+        .get();
+
+      this.totalCustomers = snap.size;
+    } catch (e) {
+      console.error('Error obteniendo total de clientes activos', e);
+      this.totalCustomers = 0;
+    }
   }
 
   // 1️⃣ GRAFICA PRINCIPAL
@@ -54,7 +75,7 @@ export class DashboardPage implements AfterViewInit {
         plugins: {
           legend: {
             labels: {
-              color: 'white'
+              color: '#374151'
             }
           }
         },
@@ -62,11 +83,11 @@ export class DashboardPage implements AfterViewInit {
         scales: {
 
           x: {
-            ticks: { color: 'white' }
+            ticks: { color: '#6b7280' }
           },
 
           y: {
-            ticks: { color: 'white' }
+            ticks: { color: '#6b7280' }
           }
 
         }
@@ -118,7 +139,7 @@ export class DashboardPage implements AfterViewInit {
 
             labels: {
 
-              color: 'white'
+              color: '#374151'
 
             }
 
@@ -170,27 +191,19 @@ export class DashboardPage implements AfterViewInit {
         plugins: {
           legend: {
             labels: {
-              color: 'white'
+              color: '#374151'
             }
           }
         },
-
         scales: {
-
           x: {
-            ticks: { color: 'white' }
+            ticks: { color: '#6b7280' }
           },
-
           y: {
-            ticks: { color: 'white' }
+            ticks: { color: '#6b7280' }
           }
-
         }
-
       }
-
     });
-
   }
-
 }

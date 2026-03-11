@@ -133,6 +133,27 @@
       <!-- FUNCIONES -->
       <ion-list>
 
+
+<ion-list-header>
+  Control de pagos
+</ion-list-header>
+
+<ion-item>
+
+  <ion-label>
+    Activación para validar al día con el pago
+  </ion-label>
+
+  <ion-toggle
+    slot="end"
+    color="success"
+    [(ngModel)]="config.paymentActive"
+    (ionChange)="toggle('paymentActive')">
+  </ion-toggle>
+
+</ion-item>
+
+
         <ion-list-header>
           Funciones del sistema
         </ion-list-header>

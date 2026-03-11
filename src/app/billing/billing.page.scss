@@ -1,8 +1,66 @@
-.page { --background: #f4f4f4; }
+.billing-content {
+  --background: #f9fafb;
+  --padding-top: 0;
+  --padding-bottom: 24px;
+  --padding-start: 0;
+  --padding-end: 0;
+}
 
-.card-actions, .card-list {
+.segment-wrap {
+  margin-bottom: 20px;
+}
+
+.billing-segment {
+  --background: #ffffff;
   border-radius: 12px;
-  margin: 12px;
+  padding: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.billing-segment ion-segment-button {
+  --indicator-color: #2563eb;
+  --color: #6b7280;
+  --color-checked: #111827;
+  font-weight: 500;
+  text-transform: none;
+  min-height: 40px;
+}
+
+.card-actions,
+.card-list {
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.card-actions ion-card-header,
+.card-list ion-card-header {
+  padding-bottom: 8px;
+}
+
+.card-actions ion-card-title,
+.card-list ion-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.card-actions ion-card-subtitle,
+.card-list ion-card-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.card-actions ion-button {
+  margin-bottom: 10px;
+  --border-radius: 10px;
+  font-weight: 500;
+}
+
+.card-actions ion-button:last-child {
+  margin-bottom: 0;
 }
 
 .row {
@@ -10,27 +68,35 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .title {
   font-weight: 700;
   font-size: 15px;
+  color: #111827;
 }
 
 .sub {
   margin-top: 4px;
   font-size: 13px;
-  opacity: 0.9;
+  color: #4b5563;
 }
 
-.sep { margin: 0 6px; opacity: 0.8; }
+.sep {
+  margin: 0 6px;
+  opacity: 0.8;
+}
 
-.warn { color: #b36b00; font-weight: 700; }
+.warn {
+  color: #b45309;
+  font-weight: 600;
+}
 
 .dates {
   margin-top: 8px;
   font-size: 12px;
-  opacity: 0.9;
+  color: #6b7280;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px 10px;
@@ -39,11 +105,33 @@
 .hint {
   margin-top: 8px;
   font-size: 12px;
-  color: #444;
+  color: #6b7280;
 }
 
 .btns {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.btns ion-button {
+  --border-radius: 8px;
+  font-size: 12px;
+}
+
+.invoice-list {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.invoice-list ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  font-size: 13px;
+}
+
+.invoice-list ion-badge {
+  font-size: 10px;
+  font-weight: 600;
 }

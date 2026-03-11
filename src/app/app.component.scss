@@ -1,96 +1,192 @@
-/* SIDEBAR BACKGROUND */
+/* ========== SIDEBAR - SaaS dark theme ========== */
 .menu-dark {
-
-  --background: #0f172a; /* azul oscuro profesional */
-
+  --background: #1a2b42;
+  --width: 260px;
 }
 
-/* fondo completo del contenido del menú */
 .menu-dark ion-content {
-
-  --background: #0f172a !important;
-
+  --background: #1a2b42 !important;
 }
 
-/* lista */
-.menu-dark ion-list {
-
-  background: transparent !important;
-
-}
-
-/* items del menu */
-.menu-dark ion-item {
-
-  --background: transparent !important;
-
-  --color: #cbd5e1;
-
-  --border-color: transparent;
-
-  margin-bottom: 5px;
-
-  border-radius: 8px;
-
-}
-
-/* hover effect */
-.menu-dark ion-item:hover {
-
-  --background: #1e293b;
-
-  --color: #ffffff;
-
-}
-
-/* item seleccionado */
-.menu-dark .selected {
-
-  --background: #2563eb !important;
-
-  --color: #ffffff !important;
-
-  font-weight: 600;
-
-}
-
-/* icon color */
-.menu-dark ion-icon {
-
-  color: #cbd5e1;
-
-}
-
-/* icon cuando esta activo */
-.menu-dark .selected ion-icon {
-
-  color: #ffffff;
-
-}
-
-/* header logo */
 .menu-header {
-
-  padding: 20px;
-
-  text-align: center;
-
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* logo */
 .logo {
-
-  width: 160px;
-
-  margin-bottom: 10px;
-
+  width: 140px;
+  margin-bottom: 8px;
+  display: block;
 }
 
-/* subtitle */
 .subtitle {
-
   color: #94a3b8;
+  font-size: 12px;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
 
-  font-size: 13px;
+.menu-list {
+  background: transparent !important;
+  padding: 12px 8px;
+}
 
+.menu-group-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  padding: 14px 16px 6px;
+  margin-top: 4px;
+}
+
+.menu-group-label:first-child {
+  margin-top: 0;
+  padding-top: 4px;
+}
+
+.menu-dark ion-item {
+  --background: transparent !important;
+  --color: #cbd5e1;
+  --border-color: transparent;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  margin-bottom: 2px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.menu-dark ion-item:hover {
+  --background: rgba(255, 255, 255, 0.06) !important;
+  --color: #ffffff;
+}
+
+.menu-dark .selected {
+  --background: #2563eb !important;
+  --color: #ffffff !important;
+  font-weight: 600;
+}
+
+.menu-dark ion-icon {
+  color: #94a3b8;
+  margin-inline-end: 12px;
+}
+
+.menu-dark .selected ion-icon {
+  color: #ffffff;
+}
+
+.menu-dark ion-item::part(native) {
+  --detail-icon-color: rgba(255, 255, 255, 0.5);
+}
+
+.menu-dark .selected ion-item::part(native) {
+  --detail-icon-color: #ffffff;
+}
+
+/* ========== MAIN AREA ========== */
+.main-area {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #f9fafb;
+}
+
+/* ========== TOP HEADER BAR ========== */
+.main-header {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.main-toolbar {
+  --background: #28394e;
+  --color: #e5e7eb;
+  --border-width: 0;
+  --min-height: 56px;
+  padding-inline: 8px;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.menu-btn {
+  --color: #e5e7eb;
+  margin-inline-end: 8px;
+}
+
+.header-actions {
+  gap: 4px;
+}
+
+.icon-btn {
+  --color: #94a3b8;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  margin: 0 2px;
+}
+
+.icon-btn:hover {
+  --color: #ffffff;
+}
+
+.icon-btn ion-icon {
+  font-size: 22px;
+}
+
+.avatar-btn ion-icon {
+  font-size: 28px;
+}
+
+/* ========== PAGE CONTENT ========== */
+.main-content {
+  --background: #f9fafb;
+  --padding-top: 24px;
+  --padding-bottom: 24px;
+  --padding-start: 24px;
+  --padding-end: 24px;
+}
+
+/* Scrollbar: oculta por defecto, solo visible al hacer hover o scroll (incl. contenido interno de ion-content) */
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host,
+:host ::ng-deep ion-content.main-content .inner-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host:hover,
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host:focus-within,
+:host ::ng-deep ion-content.main-content .inner-scroll:hover,
+:host ::ng-deep ion-content.main-content .inner-scroll:focus-within {
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host::-webkit-scrollbar,
+:host ::ng-deep ion-content.main-content .inner-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host::-webkit-scrollbar-track,
+:host ::ng-deep ion-content.main-content .inner-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host::-webkit-scrollbar-thumb,
+:host ::ng-deep ion-content.main-content .inner-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host:hover::-webkit-scrollbar-thumb,
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host:focus-within::-webkit-scrollbar-thumb,
+:host ::ng-deep ion-content.main-content .inner-scroll:hover::-webkit-scrollbar-thumb,
+:host ::ng-deep ion-content.main-content .inner-scroll:focus-within::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+:host ::ng-deep ion-content.main-content .ion-content-scroll-host::-webkit-scrollbar-thumb:hover,
+:host ::ng-deep ion-content.main-content .inner-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.35);
 }

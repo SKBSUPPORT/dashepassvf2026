@@ -648,13 +648,8 @@ export class ConfigPage implements OnInit {
 
     this.nivel2 = [];
 
-    i = 0;
-
-    for (var i = 0; i < this.nivel1.length; i++) {
-
-
-
-      var niveluno = this.nivel1[i];
+    for (let i = 0; i < this.nivel1.length; i++) {
+      const niveluno = this.nivel1[i];
 
 
 

@@ -122,3 +122,80 @@ ion-textarea {
 
 }
 
+/* =====================================
+   LAYOUT PÁGINAS (SaaS consistente)
+   Usar en todas las páginas internas
+===================================== */
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px 24px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header .page-title {
+  margin: 0 0 4px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+.page-header .page-breadcrumb {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Cards estándar para listados y formularios */
+.saas-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+/* =====================================
+   SCROLLBAR: solo visible al hacer scroll / hover
+   No se ve como parte fija de la UI
+===================================== */
+
+/* Área principal de contenido: scrollbar oculta por defecto */
+ion-content.main-content {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+ion-content.main-content:hover,
+ion-content.main-content:focus-within {
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* WebKit (Chrome, Safari, Edge): scrollbar fina, visible solo al hover */
+ion-content.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+ion-content.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+ion-content.main-content::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+ion-content.main-content:hover::-webkit-scrollbar-thumb,
+ion-content.main-content:focus-within::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+ion-content.main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+

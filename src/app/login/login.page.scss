@@ -1,34 +1,193 @@
 .login-background {
-  --background: #f1f5f9;
+  --background: radial-gradient(circle at top left, #1e293b 0, #020617 45%, #020617 100%);
+  color: #e5e7eb;
 }
 
-
-/* ESTE CENTRA TODO */
 .center-wrapper {
-
   height: 100%;
-
+  padding: 24px 16px;
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
 }
 
-
-/* CARD */
-.login-card {
-
+.auth-layout {
   width: 100%;
-  max-width: 420px;
-
-  padding: 30px;
-
-  background: white;
-
-  border-radius: 12px;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 32px;
+  align-items: center;
 }
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #22c55e, #2563eb 60%, #020617 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f9fafb;
+  box-shadow: 0 18px 48px rgba(37, 99, 235, 0.7);
+}
+
+.auth-logo ion-icon {
+  font-size: 26px;
+}
+
+.auth-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+}
+
+.auth-subtitle {
+  margin: 0;
+  max-width: 360px;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.login-card {
+  width: 100%;
+  border-radius: 20px;
+  background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.35), rgba(15, 23, 42, 0.98));
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  color: #e5e7eb;
+}
+
+.login-header {
+  padding-bottom: 4px;
+}
+
+.login-header h2 {
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f9fafb;
+  text-align: center;
+}
+
+.login-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.login-form {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-form ion-item {
+  --background: rgba(15, 23, 42, 0.8);
+  --border-radius: 12px;
+  --inner-padding-end: 8px;
+  --inner-padding-start: 8px;
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --min-height: 52px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  margin-top: 4px;
+}
+
+.login-form ion-item ion-icon[slot='start'] {
+  color: #9ca3af;
+  font-size: 20px;
+}
+
+.login-form ion-input {
+  --color: #e5e7eb;
+  --placeholder-color: #6b7280;
+  --padding-start: 6px;
+  font-size: 0.95rem;
+}
+
+.password-toggle {
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 20px;
+}
+
+.password-toggle:hover {
+  color: #e5e7eb;
+}
+
+.field-error {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #fecaca;
+  padding-left: 4px;
+}
+
+.login-actions {
+  margin-top: 14px;
+}
+
+.login-actions ion-button {
+  --background: linear-gradient(135deg, #2563eb, #4f46e5);
+  --background-activated: linear-gradient(135deg, #1d4ed8, #4338ca);
+  --background-hover: linear-gradient(135deg, #2563eb, #4338ca);
+  --border-radius: 999px;
+  --box-shadow: 0 18px 40px rgba(37, 99, 235, 0.75);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.login-actions ion-button[disabled] {
+  opacity: 0.7;
+  --background: rgba(148, 163, 184, 0.45);
+  --box-shadow: none;
+}
+
+.login-actions ion-spinner {
+  margin-inline: auto;
+}
+
+.login-actions span {
+  width: 100%;
+}
+
+.helper-text {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.helper-text strong {
+  color: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .auth-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .auth-brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .auth-subtitle {
+    max-width: 100%;
+  }
+}
+
